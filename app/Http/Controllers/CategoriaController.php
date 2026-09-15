@@ -3,29 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
 
 // CONTROLLER: recebe a requisição, usa o Model e devolve uma View ou redirecionamento.
 class CategoriaController extends Controller
 {
     // READ: busca as categorias e envia os dados para a tela de listagem.
-    public function index(): View
+    public function index()
     {
-        $categorias = Categoria::orderBy('nome')->orderBy('id')->paginate(10);
-
+        $categorias = Categoria::all();
         return view('categorias.index', compact('categorias'));
     }
 
-    // Exibe o formulário de cadastro, ainda sem salvar nada.
-    public function create(): View
+    // Exibe o formulário de cadastro
+    public function create()
     {
         return view('categorias.create');
     }
 
     // CREATE: valida os campos e salva uma nova categoria.
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         Categoria::create($this->validar($request));
 
@@ -34,19 +31,19 @@ class CategoriaController extends Controller
     }
 
     // O Laravel busca a categoria pelo ID da rota e retorna 404 se não existir.
-    public function show(Categoria $categoria): View
+    public function show(Categoria $categoria)
     {
         return view('categorias.show', compact('categoria'));
     }
 
     // Abre o formulário com os dados atuais da categoria.
-    public function edit(Categoria $categoria): View
+    public function edit(Categoria $categoria)
     {
         return view('categorias.edit', compact('categoria'));
     }
 
     // UPDATE: valida e atualiza a categoria encontrada pelo Laravel.
-    public function update(Request $request, Categoria $categoria): RedirectResponse
+    public function update(Request $request, Categoria $categoria)
     {
         $categoria->update($this->validar($request));
 
@@ -55,7 +52,7 @@ class CategoriaController extends Controller
     }
 
     // DELETE: remove a categoria e volta para a listagem.
-    public function destroy(Categoria $categoria): RedirectResponse
+    public function destroy(Categoria $categoria)
     {
         $categoria->delete();
 
@@ -63,13 +60,10 @@ class CategoriaController extends Controller
             ->with('sucesso', 'Categoria excluída com sucesso!');
     }
 
-    /**
-     * Cadastro e edição compartilham as mesmas regras.
-     * Se houver erro, o Laravel volta ao formulário com os erros e os dados digitados.
-     *
-     * @return array<string, mixed>
-     */
-    private function validar(Request $request): array
+
+     //Cadastro e edição compartilham as mesmas regras.
+
+    private function validar(Request $request)
     {
         return $request->validate([
             'nome' => ['required', 'string', 'max:100'],

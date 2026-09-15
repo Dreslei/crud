@@ -7,11 +7,9 @@ Route::view('/', 'welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
-
-    // Cria as sete rotas do CRUD e associa cada uma ao método do controller.
-    // O parâmetro singular permite ao Laravel encontrar o Model Categoria pelo ID.
-    Route::resource('categorias', CategoriaController::class)
-        ->parameters(['categorias' => 'categoria']);
+    Route::resource('categorias', CategoriaController::class);
 });
+
+
 
 require __DIR__.'/settings.php';

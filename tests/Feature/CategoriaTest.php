@@ -39,8 +39,8 @@ class CategoriaTest extends TestCase
             ->assertRedirect(route('categorias.index'))->assertSessionHas('sucesso');
 
         $categoria = Categoria::firstOrFail();
-        $this->assertNotNull($categoria->getAttribute('criado_em'));
-        $this->assertNotNull($categoria->getAttribute('atualizado_em'));
+        $this->assertNotNull($categoria->getAttribute('created_at'));
+        $this->assertNotNull($categoria->getAttribute('updated_at'));
         $this->get(route('categorias.index'))->assertOk()->assertSee('Livros');
         $this->get(route('categorias.show', $categoria))->assertOk()->assertSee('Material de leitura');
         $this->get(route('categorias.edit', $categoria))->assertOk()->assertSee('Livros');

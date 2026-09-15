@@ -13,8 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 100);
             $table->text('descricao')->nullable();
-            $table->timestamp('criado_em')->nullable();
-            $table->timestamp('atualizado_em')->nullable();
+            $table->timestamps();
         });
     }
 
