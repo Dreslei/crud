@@ -18,6 +18,9 @@
                     <flux:sidebar.item icon="tag" :href="route('categorias.index')" :current="request()->routeIs('categorias.*')" wire:navigate>
                         Categorias
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="shopping-bag" :href="route('produtos.index')" :current="request()->routeIs('produtos.*')" wire:navigate>
+                        Produtos
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

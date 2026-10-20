@@ -46,6 +46,11 @@ class CategoriaController extends Controller
 
     public function destroy(Categoria $categoria)
     {
+        if ($categoria->produtos()->exists()) {
+            return redirect()->route('categorias.index')
+                ->with('erro', 'Não é possível excluir uma categoria com produtos vinculados.');
+        }
+
         $categoria->delete();
 
         return redirect()->route('categorias.index')
