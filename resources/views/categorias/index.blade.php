@@ -1,9 +1,7 @@
-{{-- Reutiliza o layout do projeto em resources/views/layouts/app.blade.php. --}}
 <x-layouts::app title="Categorias">
     <section lang="pt-BR" class="mx-auto w-full max-w-4xl space-y-6">
         <h1 class="text-2xl font-semibold">Categorias</h1>
 
-        {{-- A mensagem de sucesso aparece após cadastrar, editar ou excluir. --}}
         @if (session('sucesso'))
             <p role="status" class="rounded-lg border border-green-600 p-4 text-green-700 dark:text-green-400">
                 {{ session('sucesso') }}
@@ -24,7 +22,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- O forelse também trata o caso de a tabela estar vazia. --}}
                     @forelse ($categorias as $categoria)
                         <tr class="border-t border-zinc-200 dark:border-zinc-700">
                             <td class="p-4">{{ $categoria->id }}</td>
@@ -34,7 +31,6 @@
                                 <div class="flex flex-wrap items-center gap-3">
                                     <a class="underline" href="{{ route('categorias.show', $categoria) }}">Ver</a>
                                     <a class="underline" href="{{ route('categorias.edit', $categoria) }}">Editar</a>
-                                    {{-- DELETE indica a exclusão; @csrf protege o envio do formulário. --}}
                                     <form action="{{ route('categorias.destroy', $categoria) }}" method="POST" onsubmit="return confirm('Deseja excluir esta categoria?')">
                                         @csrf
                                         @method('DELETE')

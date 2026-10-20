@@ -9,7 +9,6 @@ use Tests\TestCase;
 
 class CategoriaTest extends TestCase
 {
-    // Os testes usam o SQLite em memória configurado no phpunit.xml.
     use RefreshDatabase;
 
     public function test_visitantes_nao_podem_acessar_o_crud(): void

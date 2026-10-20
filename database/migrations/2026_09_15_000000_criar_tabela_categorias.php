@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    // A migration define a estrutura da tabela no banco de dados.
     public function up(): void
     {
         Schema::create('categorias', function (Blueprint $table) {
@@ -17,7 +16,6 @@ return new class extends Migration
         });
     }
 
-    // O Laravel chama down() quando esta migration é desfeita.
     public function down(): void
     {
         Schema::dropIfExists('categorias');

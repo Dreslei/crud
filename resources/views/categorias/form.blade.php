@@ -1,8 +1,5 @@
-{{-- Este formulário é compartilhado pelo cadastro e pela edição. --}}
-{{-- O token CSRF protege o envio do formulário contra requisições de outros sites. --}}
 
 
-{{-- old() recupera o texto digitado se a validação falhar; na edição, usamos os dados salvos. --}}
 
 @csrf
 <flux:input name="nome" label="Nome" :value="old('nome', $categoria->nome ?? '')" required maxlength="100" />
