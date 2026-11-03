@@ -12,6 +12,7 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::all();
+
         return view('categorias.index', compact('categorias'));
     }
 
@@ -54,14 +55,18 @@ class CategoriaController extends Controller
     // DELETE: remove a categoria e volta para a listagem.
     public function destroy(Categoria $categoria)
     {
+        if ($categoria->produtos()->exists()) {
+            return redirect()->route('categorias.index')
+                ->with('erro', 'Esta categoria possui produtos vinculados. Altere a categoria desses produtos ou exclua-os antes de continuar.');
+        }
+
         $categoria->delete();
 
         return redirect()->route('categorias.index')
             ->with('sucesso', 'Categoria excluída com sucesso!');
     }
 
-
-     //Cadastro e edição compartilham as mesmas regras.
+    // Cadastro e edição compartilham as mesmas regras.
 
     private function validar(Request $request)
     {
