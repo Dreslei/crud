@@ -24,6 +24,9 @@
                     <flux:sidebar.item icon="document-text" :href="route('fichas-tecnicas.index')" :current="request()->routeIs('fichas-tecnicas.*')" wire:navigate>
                         Fichas técnicas
                     </flux:sidebar.item>
+                    <flux:sidebar.item icon="truck" :href="route('fornecedores.index')" :current="request()->routeIs('fornecedores.*')" wire:navigate>
+                        Fornecedores
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

@@ -35,7 +35,7 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto): View
     {
-        $produto->load('categoria', 'fichaTecnica');
+        $produto->load('categoria', 'fichaTecnica', 'fornecedores');
 
         return view('produtos.show', compact('produto'));
     }

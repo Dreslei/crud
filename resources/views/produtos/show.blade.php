@@ -12,6 +12,14 @@
         </p>
 
         <div class="flex flex-wrap items-center gap-4">
+            <div class="w-full space-y-2">
+                <strong>Fornecedores:</strong>
+                @forelse ($produto->fornecedores as $fornecedor)
+                    <p class="break-words"><a class="underline" href="{{ route('fornecedores.show', $fornecedor) }}">{{ $fornecedor->nome }}</a></p>
+                @empty
+                    <p>Nenhum fornecedor vinculado.</p>
+                @endforelse
+            </div>
             @if ($produto->fichaTecnica)
                 <flux:button :href="route('fichas-tecnicas.show', $produto->fichaTecnica)">Ver ficha técnica</flux:button>
             @endif

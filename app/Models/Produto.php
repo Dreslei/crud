@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Produto extends Model
@@ -29,5 +30,11 @@ class Produto extends Model
     public function fichaTecnica(): HasOne
     {
         return $this->hasOne(FichaTecnica::class);
+    }
+
+    /** @return BelongsToMany<Fornecedor, $this> */
+    public function fornecedores(): BelongsToMany
+    {
+        return $this->belongsToMany(Fornecedor::class, 'fornecedor_produto');
     }
 }
