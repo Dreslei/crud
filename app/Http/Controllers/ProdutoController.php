@@ -35,7 +35,7 @@ class ProdutoController extends Controller
 
     public function show(Produto $produto): View
     {
-        $produto->load('categoria');
+        $produto->load('categoria', 'fichaTecnica');
 
         return view('produtos.show', compact('produto'));
     }
@@ -57,6 +57,11 @@ class ProdutoController extends Controller
 
     public function destroy(Produto $produto): RedirectResponse
     {
+        if ($produto->fichaTecnica()->exists()) {
+            return redirect()->route('produtos.index')
+                ->with('erro', 'Este produto possui uma ficha técnica. Exclua a ficha antes de excluir o produto.');
+        }
+
         $produto->delete();
 
         return redirect()->route('produtos.index')

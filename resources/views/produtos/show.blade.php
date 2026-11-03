@@ -12,6 +12,9 @@
         </p>
 
         <div class="flex flex-wrap items-center gap-4">
+            @if ($produto->fichaTecnica)
+                <flux:button :href="route('fichas-tecnicas.show', $produto->fichaTecnica)">Ver ficha técnica</flux:button>
+            @endif
             <flux:button :href="route('produtos.edit', $produto)">Editar</flux:button>
             <a class="underline" href="{{ route('produtos.index') }}">Voltar</a>
         </div>

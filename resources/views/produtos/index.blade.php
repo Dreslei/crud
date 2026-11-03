@@ -10,6 +10,12 @@
 
         <flux:button :href="route('produtos.create')" variant="primary">Novo produto</flux:button>
 
+        @if (session('erro'))
+            <p role="alert" class="rounded-lg border border-red-600 p-4 text-red-600 dark:text-red-400">
+                {{ session('erro') }}
+            </p>
+        @endif
+
         <div class="overflow-x-auto rounded-lg border border-zinc-200 dark:border-zinc-700">
             <table class="w-full text-left text-sm">
                 <caption class="sr-only">Lista de produtos cadastrados</caption>
