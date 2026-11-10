@@ -33,7 +33,7 @@
                                 <div class="flex flex-wrap items-center gap-3">
                                     <a class="underline" href="{{ route('fichas-tecnicas.show', $fichaTecnica) }}">Ver</a>
                                     <a class="underline" href="{{ route('fichas-tecnicas.edit', $fichaTecnica) }}">Editar</a>
-                                    <form action="{{ route('fichas-tecnicas.destroy', $fichaTecnica) }}" method="POST" onsubmit="return confirm('Deseja excluir esta ficha técnica?')">
+                                    <form action="{{ route('fichas-tecnicas.destroy', $fichaTecnica) }}" method="POST" data-confirm-delete="Deseja realmente excluir esta ficha técnica? Esta ação não pode ser desfeita.">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="cursor-pointer text-red-600 underline dark:text-red-400">Excluir</button>
@@ -47,5 +47,9 @@
                 </tbody>
             </table>
         </div>
+        @if ($fichasTecnicas->hasPages())
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Página {{ $fichasTecnicas->currentPage() }} de {{ $fichasTecnicas->lastPage() }}</p>
+            {{ $fichasTecnicas->links() }}
+        @endif
     </section>
 </x-layouts::app>
