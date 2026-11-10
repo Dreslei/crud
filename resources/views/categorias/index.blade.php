@@ -40,7 +40,7 @@
                                     <a class="underline" href="{{ route('categorias.show', $categoria) }}">Ver</a>
                                     <a class="underline" href="{{ route('categorias.edit', $categoria) }}">Editar</a>
                                     {{-- DELETE indica a exclusão; @csrf protege o envio do formulário. --}}
-                                    <form action="{{ route('categorias.destroy', $categoria) }}" method="POST" onsubmit="return confirm('Deseja excluir esta categoria?')">
+                                    <form action="{{ route('categorias.destroy', $categoria) }}" method="POST" data-confirm-delete="Deseja realmente excluir esta categoria? Esta ação não pode ser desfeita.">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="cursor-pointer text-red-600 underline dark:text-red-400">Excluir</button>
