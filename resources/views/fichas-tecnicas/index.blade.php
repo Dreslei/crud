@@ -47,5 +47,9 @@
                 </tbody>
             </table>
         </div>
+        @if ($fichasTecnicas->hasPages())
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Página {{ $fichasTecnicas->currentPage() }} de {{ $fichasTecnicas->lastPage() }}</p>
+            {{ $fichasTecnicas->links() }}
+        @endif
     </section>
 </x-layouts::app>

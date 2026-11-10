@@ -49,5 +49,9 @@
                 </tbody>
             </table>
         </div>
+        @if ($fornecedores->hasPages())
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">Página {{ $fornecedores->currentPage() }} de {{ $fornecedores->lastPage() }}</p>
+            {{ $fornecedores->links() }}
+        @endif
     </section>
 </x-layouts::app>
