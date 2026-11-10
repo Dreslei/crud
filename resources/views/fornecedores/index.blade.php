@@ -35,7 +35,7 @@
                                 <div class="flex flex-wrap items-center gap-3">
                                     <a class="underline" href="{{ route('fornecedores.show', $fornecedor) }}">Ver</a>
                                     <a class="underline" href="{{ route('fornecedores.edit', $fornecedor) }}">Editar</a>
-                                    <form action="{{ route('fornecedores.destroy', $fornecedor) }}" method="POST" onsubmit="return confirm('Deseja excluir este fornecedor? Os produtos continuarão cadastrados.')">
+                                    <form action="{{ route('fornecedores.destroy', $fornecedor) }}" method="POST" data-confirm-delete="Deseja realmente excluir este fornecedor? Os produtos continuarão cadastrados. Esta ação não pode ser desfeita.">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="cursor-pointer text-red-600 underline dark:text-red-400">Excluir</button>
