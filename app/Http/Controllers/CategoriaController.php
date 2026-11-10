@@ -11,9 +11,7 @@ class CategoriaController extends Controller
     // READ: busca as categorias e envia os dados para a tela de listagem.
     public function index()
     {
-        $categorias = Categoria::all();
-
-        return view('categorias.index', compact('categorias'));
+        return view('categorias.index');
     }
 
     // Exibe o formulário de cadastro

@@ -12,10 +12,7 @@ class ProdutoController extends Controller
 {
     public function index(): View
     {
-        // with() carrega as categorias junto da listagem, evitando consultas repetidas.
-        $produtos = Produto::with('categoria')->get();
-
-        return view('produtos.index', compact('produtos'));
+        return view('produtos.index');
     }
 
     public function create(): View

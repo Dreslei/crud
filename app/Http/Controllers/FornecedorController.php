@@ -13,9 +13,7 @@ class FornecedorController extends Controller
 {
     public function index(): View
     {
-        $fornecedores = Fornecedor::withCount('produtos')->get();
-
-        return view('fornecedores.index', compact('fornecedores'));
+        return view('fornecedores.index');
     }
 
     public function create(): View
