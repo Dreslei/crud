@@ -13,9 +13,7 @@ class FichaTecnicaController extends Controller
 {
     public function index(): View
     {
-        $fichasTecnicas = FichaTecnica::with('produto')->orderBy('id')->paginate(10);
-
-        return view('fichas-tecnicas.index', compact('fichasTecnicas'));
+        return view('fichas-tecnicas.index');
     }
 
     public function create(): View
